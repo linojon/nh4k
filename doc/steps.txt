@@ -1,0 +1,131 @@
+## ---------------
+$ rails -v
+Rails 3.2.3
+$ rails new nh4k -T
+
+$ git init
+$ git add .
+$ commit -am "first commit"
+
+Gemfile
+    source 'https://rubygems.org'
+
+    gem 'rails', '3.2.3'
+    gem 'jquery-rails'
+    gem 'haml-rails'
+    gem 'simple_form'
+    gem 'decent_exposure'
+    gem 'squeel'
+
+    group :assets do
+      gem 'sass-rails',   '~> 3.2.3'
+      gem 'coffee-rails', '~> 3.2.1'
+      gem 'uglifier', '>= 1.0.3'
+      gem 'twitter-bootstrap-rails'
+      #gem 'bootstrap-sass'
+    end
+
+    group :test, :development do
+      gem 'debugger'
+      gem 'sqlite3'
+
+      gem "rspec-rails"
+      gem 'rspec-instafail'
+      gem 'database_cleaner'
+  
+      gem "capybara"
+      gem 'capybara-webkit'
+      gem "selenium-webdriver"
+      gem 'launchy' # provides save_and_open_page
+  
+      gem 'factory_girl_rails'
+      gem 'faker'
+    end
+
+    group :development do
+      gem 'heroku'
+    end
+
+    group :production do
+      gem 'thin'
+      gem 'pg'
+    end
+    
+$ bundle install --without production
+$ rails g bootstrap:install
+$ rails g simple_form:install --bootstrap
+$ rails g rspec:install
+
+$ rails g scaffold
+=> Template engine: Default: haml
+   Fixture replacement: Default: factory_girl
+   Form builder: Default: simple_form
+
+tweaks to simple_form for bootstrap
+  https://github.com/plataformatec/simple_form/wiki/Twitter-Bootstrap-v2-and-simple_form-v2
+  config/initializers/simple_form.rb
+      config.form_class = 'simple_form form-horizontal'
+      
+using sass instead of less
+  Gemfile
+      gem 'bootstrap-sass'
+  rename bootstrap_and_overrides.css.less file to end in .scss
+    and edit for sass
+  create nh4k.css.scss
+    
+  application.js
+      //= require bootstrap
+  remove javascripts/bootstrap.js.coffee
+  
+## ---------------
+## pages
+
+routes.rb
+    match 'about' => 'pages#about'
+    root :to => 'pages#home'
+
+$ rm public/index.html
+
+app/controllers/pages_controller.rb
+    class PagesController < ApplicationController
+      def home
+        render
+      end
+      def about
+        render
+      end
+    end
+
+app/views/pages/home.html.haml
+    %h1 Home
+    %p Welcome to NH4K
+    %i.icon-trash
+    
+app/views/pages/about.html.haml
+    %h1 About
+    %p (TBD)
+
+
+## ---------------
+## ---------------
+  
+=======================
+layout
+pages_spec
+
+generate resources: ...
+
+# todo: github
+
+# todo: heroku
+
+
+lib/extras/simple_form_extension.rb
+    ...see wiki
+config/application.rb
+    config.autoload_paths += %W(#{config.root}/lib/extras)
+config/locales/simple_form.en.yml
+    ...
+views/people/_form.html.haml
+    replace f.button :submit with
+    = f.button :wrapped, :cancel => people_path

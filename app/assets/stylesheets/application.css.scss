@@ -9,5 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= depend_on "bootstrap_and_overrides.css.scss"
 */
+@import "bootstrap_and_overrides.css.scss";
+@import "nh4k.css.scss";
