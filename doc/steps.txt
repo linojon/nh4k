@@ -88,12 +88,6 @@ $ rm public/index.html
 
 app/controllers/pages_controller.rb
     class PagesController < ApplicationController
-      def home
-        render
-      end
-      def about
-        render
-      end
     end
 
 app/views/pages/home.html.haml
@@ -107,6 +101,25 @@ app/views/pages/about.html.haml
 
 
 ## ---------------
+## layout
+
+application_helper.rb
+  module ApplicationHelper
+    def title(page_title, show_title = true)
+      content_for(:title) { h(page_title.to_s) }
+      @show_title = show_title
+    end
+
+    def show_title?
+      @show_title
+    end
+
+    def body_id(id)
+      content_for(:body_id) { id }
+    end
+  end
+  
+
 ## ---------------
   
 =======================
