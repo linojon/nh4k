@@ -176,12 +176,23 @@ _flash.html.haml
         %i.icon-remove
       = msg
 
+_banner
+_navbar
+_footer
+  
+
 ## ---------------
-## app layout
-
+# github
+$ git remote add origin git@github.com:linoj/nh4k.git
+$ git push origin master
 
 
 ## ---------------
+## resources
+
+
+
+
 ## ---------------
 ## ---------------
 ## ---------------
@@ -189,8 +200,6 @@ _flash.html.haml
 =======================
 
 generate resources: ...
-
-# todo: github
 
 # todo: heroku
 
