@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @hiker.name
+
+= link_to 'Edit', edit_hiker_path(@hiker)
+\|
+= link_to 'Back', hikers_path

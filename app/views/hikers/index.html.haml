@@ -1,0 +1,19 @@
+%h1 Listing hikers
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @hikers.each do |hiker|
+    %tr
+      %td= hiker.name
+      %td= link_to 'Show', hiker
+      %td= link_to 'Edit', edit_hiker_path(hiker)
+      %td= link_to 'Destroy', hiker, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Hiker', new_hiker_path

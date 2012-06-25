@@ -5,7 +5,7 @@ $ rails new nh4k -T
 
 $ git init
 $ git add .
-$ commit -am "first commit"
+$ git commit -am "first commit"
 
 Gemfile
     source 'https://rubygems.org'
@@ -190,7 +190,44 @@ $ git push origin master
 ## ---------------
 ## resources
 
+mountains
+$ rails g scaffold Mountain name elevation:integer lat:decimal lng:decimal trainsnh netc amc notes:text
+  
+mountains
+        name, elevation, ...
 
+mountain_trips
+
+trips
+        date(s), ..., description of the trails, length
+  has and belongs to many hikers
+  has and belongs to many mountains
+
+  $ rails g scaffold Trip date:date description:text distance:float
+
+hiker_trips
+
+hikers
+        name, ... 
+  has many mountains (through trips)
+  
+  $ rails g scaffold Hiker name 
+
+
+journals (trip report)
+      text,...
+  belongs to hiker
+  belongs to trip
+
+
+=============
+
+  4000 Footer
+      Cannon
+      Moosalauk   4123'    July 1, 2011 []    me, Lisa 
+                            Oct 5, 2010       me, Jarrett, Lisa
+
+================
 
 
 ## ---------------

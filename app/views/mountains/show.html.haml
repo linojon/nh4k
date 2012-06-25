@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @mountain.name
+%p
+  %b Elevation:
+  = @mountain.elevation
+%p
+  %b Lat:
+  = @mountain.lat
+%p
+  %b Lng:
+  = @mountain.lng
+%p
+  %b Trainsnh:
+  = @mountain.trainsnh
+%p
+  %b Netc:
+  = @mountain.netc
+%p
+  %b Amc:
+  = @mountain.amc
+%p
+  %b Notes:
+  = @mountain.notes
+
+= link_to 'Edit', edit_mountain_path(@mountain)
+\|
+= link_to 'Back', mountains_path

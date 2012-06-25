@@ -11,6 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20120623163424) do
+
+  create_table "mountains", :force => true do |t|
+    t.string   "name"
+    t.integer  "elevation"
+    t.decimal  "lat",        :precision => 15, :scale => 12
+    t.decimal  "lng",        :precision => 15, :scale => 12
+    t.string   "trainsnh"
+    t.string   "netc"
+    t.string   "amc"
+    t.text     "notes"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
 
 end

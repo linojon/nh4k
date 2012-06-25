@@ -1,5 +1,9 @@
 Nh4k::Application.routes.draw do
   
+  resources :hikers
+
+  resources :mountains
+
   match 'about' => 'pages#about'
   root :to => 'pages#home'
   
