@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Start at:
+  = trip.start_at
+%p
+  %b End at:
+  = trip.end_at
+%p
+  %b Trail description:
+  = trip.route
+%p
+  %b Distance:
+  = trip.distance
+
+= link_to 'Edit', edit_trip_path(trip)
+\|
+= link_to 'Back', trips_path

@@ -1,0 +1,25 @@
+%h1 Listing trips
+
+%table
+  %tr
+    %th Start at
+    %th End at
+    %th Trail description
+    %th Distance
+    %th
+    %th
+    %th
+
+  - trips.each do |trip|
+    %tr
+      %td= trip.start_at
+      %td= trip.end_at
+      %td= trip.route
+      %td= trip.distance
+      %td= link_to 'Show', trip
+      %td= link_to 'Edit', edit_trip_path(trip)
+      %td= link_to 'Destroy', trip, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Trip', new_trip_path

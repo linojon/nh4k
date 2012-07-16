@@ -1,0 +1,11 @@
+= simple_form_for(trip) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :start_at
+    = f.input :end_at
+    = f.input :route
+    = f.input :distance
+
+  .form-actions
+    = f.button :submit

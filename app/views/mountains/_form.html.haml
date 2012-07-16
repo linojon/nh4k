@@ -1,4 +1,4 @@
-= simple_form_for(@mountain) do |f|
+= simple_form_for(mountain) do |f|
   = f.error_notification
 
   .form-inputs
@@ -6,9 +6,9 @@
     = f.input :elevation
     = f.input :lat
     = f.input :lng
-    = f.input :trainsnh
-    = f.input :netc
-    = f.input :amc
+    = f.input :trainsnh_link
+    = f.input :netc_link
+    = f.input :amc_link
     = f.input :notes
 
   .form-actions

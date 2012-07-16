@@ -11,19 +11,55 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120623163424) do
+ActiveRecord::Schema.define(:version => 20120716155441) do
+
+  create_table "hiker_trips", :force => true do |t|
+    t.integer  "hiker_id"
+    t.integer  "trip_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "hiker_trips", ["hiker_id"], :name => "index_hiker_trips_on_hiker_id"
+  add_index "hiker_trips", ["trip_id"], :name => "index_hiker_trips_on_trip_id"
+
+  create_table "hikers", :force => true do |t|
+    t.string   "name"
+    t.date     "born_on"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "mountain_trips", :id => false, :force => true do |t|
+    t.integer  "mountain_id"
+    t.integer  "trip_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "mountain_trips", ["mountain_id"], :name => "index_mountain_trips_on_mountain_id"
+  add_index "mountain_trips", ["trip_id"], :name => "index_mountain_trips_on_trip_id"
 
   create_table "mountains", :force => true do |t|
     t.string   "name"
     t.integer  "elevation"
-    t.decimal  "lat",        :precision => 15, :scale => 12
-    t.decimal  "lng",        :precision => 15, :scale => 12
-    t.string   "trainsnh"
-    t.string   "netc"
-    t.string   "amc"
+    t.decimal  "lat",           :precision => 15, :scale => 12
+    t.decimal  "lng",           :precision => 15, :scale => 12
+    t.string   "trainsnh_link"
+    t.string   "netc_link"
+    t.string   "amc_link"
     t.text     "notes"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+  end
+
+  create_table "trips", :force => true do |t|
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.text     "route"
+    t.float    "distance"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

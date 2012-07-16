@@ -12,4 +12,5 @@
  *= depend_on "bootstrap_and_overrides.css.scss"
 */
 @import "bootstrap_and_overrides.css.scss";
-@import "nh4k.css.scss";
+/*= depend_on "layout.css.scss" */
+@import "layout.css.scss";

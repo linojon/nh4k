@@ -2,8 +2,11 @@
 
 %p
   %b Name:
-  = @hiker.name
+  = hiker.name
+%p
+  %b Born on:
+  = hiker.born_on
 
-= link_to 'Edit', edit_hiker_path(@hiker)
+= link_to 'Edit', edit_hiker_path(hiker)
 \|
 = link_to 'Back', hikers_path

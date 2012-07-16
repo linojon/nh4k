@@ -6,23 +6,23 @@
     %th Elevation
     %th Lat
     %th Lng
-    %th Trainsnh
-    %th Netc
-    %th Amc
+    %th trainsnh_link
+    %th netc_link
+    %th amc_link
     %th Notes
     %th
     %th
     %th
 
-  - @mountains.each do |mountain|
+  - mountains.each do |mountain|
     %tr
       %td= mountain.name
       %td= mountain.elevation
       %td= mountain.lat
       %td= mountain.lng
-      %td= mountain.trainsnh
-      %td= mountain.netc
-      %td= mountain.amc
+      %td= mountain.trainsnh_link
+      %td= mountain.netc_link
+      %td= mountain.amc_link
       %td= mountain.notes
       %td= link_to 'Show', mountain
       %td= link_to 'Edit', edit_mountain_path(mountain)

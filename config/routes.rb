@@ -1,5 +1,7 @@
 Nh4k::Application.routes.draw do
   
+  resources :trips
+
   resources :hikers
 
   resources :mountains

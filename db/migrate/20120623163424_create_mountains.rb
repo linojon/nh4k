@@ -5,9 +5,9 @@ class CreateMountains < ActiveRecord::Migration
       t.integer :elevation
       t.decimal :lat, :precision => 15, :scale => 12
       t.decimal :lng, :precision => 15, :scale => 12
-      t.string :trainsnh
-      t.string :netc
-      t.string :amc
+      t.string :trainsnh_link
+      t.string :netc_link
+      t.string :amc_link
       t.text :notes
 
       t.timestamps
