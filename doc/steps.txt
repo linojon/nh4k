@@ -43,6 +43,17 @@ $ rm -rf spec/controllers
 $ rm -rf spec/views
 $ rm -rf spec/routing
 
+$ rm app/assets/stylesheets/scaffolds.css.scss
+$ rm app/assets/stylesheets/hikers.css.scss
+$ rm app/assets/stylesheets/mountains.css.scss
+$ rm app/assets/stylesheets/trips.css.scss
+
+$ rm app/assets/javascripts/hikers.js.coffee
+$ rm app/assets/javascripts/mountains.js.coffee
+$ rm app/assets/javascripts/trips.js.coffee
+
+
+
 =============
 
   4000 Footer
