@@ -1,33 +1,14 @@
-%h1 Listing mountains
+%h1 Mountains
 
-%table
-  %tr
-    %th Name
-    %th Elevation
-    %th Lat
-    %th Lng
-    %th trainsnh_link
-    %th netc_link
-    %th amc_link
-    %th Notes
-    %th
-    %th
-    %th
-
-  - mountains.each do |mountain|
-    %tr
-      %td= mountain.name
-      %td= mountain.elevation
-      %td= mountain.lat
-      %td= mountain.lng
-      %td= mountain.trainsnh_link
-      %td= mountain.netc_link
-      %td= mountain.amc_link
-      %td= mountain.notes
-      %td= link_to 'Show', mountain
-      %td= link_to 'Edit', edit_mountain_path(mountain)
-      %td= link_to 'Destroy', mountain, :confirm => 'Are you sure?', :method => :delete
+%table.table.table-striped
+  %tbody
+    - mountains.each do |mountain|
+      %tr
+        %td= link_to mountain.name, mountain
+        %td= "#{mountain.elevation}'"
+        -# %td= link_to 'Edit', edit_mountain_path(mountain)
+        -# %td= link_to 'Destroy', mountain, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
-= link_to 'New Mountain', new_mountain_path
+= link_to 'Add Mountain', new_mountain_path

@@ -1,5 +1,5 @@
 class MountainsController < ApplicationController
-  expose(:mountains) { Mountain.all }
+  expose(:mountains) { Mountain.order('elevation DESC') }
   expose(:mountain)
 
   def create
