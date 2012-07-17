@@ -45,7 +45,7 @@
   ['Cannon', 4100],
   ['Hale', 4054],
   ['Jackson', 4052],
-  ['Tom', 4051],
+  ['Tom', 4051, 'Mt. Tom'],
   ['Wildcat, D Peak', 4050],
   ['Moriah', 4049],
   ['Passaconaway', 4043],
@@ -55,6 +55,9 @@
   ['Waumbek', 4006],
   ['Isolation', 4004],
   ['Tecumseh', 4003]
-].each do |name, elev|
-  Mountain.create( name: name, elevation: elev) unless Mountain.where(name: name).present?
+].each do |name, elev, fullname|
+  Mountain.create( name: name, elevation: elev, is_nh4k: true) unless Mountain.where(name: name).present?
 end
+
+mtn = Mountain.where name: 'Tom'
+mtn.update_attributes 

@@ -11,7 +11,7 @@ $ git push origin master
 ## resources
 
 mountains
-  $ rails g scaffold Mountain name elevation:integer lat:decimal lng:decimal trainsnh_link_link netc_link_link amc_link_link notes:text
+  $ rails g scaffold Mountain name elevation:integer lat:decimal lng:decimal trailsnh_link_link netc_link_link amc_link_link notes:text
   has_and_belongs_to_many :trips
   has_many :hikers, through: :trips
   
@@ -53,6 +53,15 @@ $ rm app/assets/javascripts/mountains.js.coffee
 $ rm app/assets/javascripts/trips.js.coffee
 
 
+migrate mountain
+  fullname
+  is_nh4k
+  
+gem 'redcarpet'
+
+def markdown(text)
+  Redcarpet.new(text).to_html.html_safe
+end
 
 =============
 
@@ -61,6 +70,27 @@ $ rm app/assets/javascripts/trips.js.coffee
       Moosalauk   4123'    July 1, 2011 []    me, Lisa 
                             Oct 5, 2010       me, Jarrett, Lisa
 
+
+Possible lists
+  Mountains: 
+      all 4000 footers
+      sort by Name, Elevation
+      highlight which ones hiked (current_user)
+      tag which to do next?
+      map integrated, interactive (?)
+      
+  Trips: 
+    assume current_user
+    By mountain:
+        list of all mountains, date hiked, who
+    By date
+    By who
+    
+  hikers
+    per hiker, which mountains they've completed, % done :), hikes per year rate ? :)
+    
+      
+  
 ================
 
 

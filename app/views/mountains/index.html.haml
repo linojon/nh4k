@@ -1,14 +1,20 @@
-%h1 Mountains
+%h1 The Mountains
+.row-fluid
+  .span6
+    = render 'map'
+  .span6
+    %table.table.table-condensed.table-striped
+      %thead
+        %tr
+          %th Mountain
+          %th Elevation
+      %tbody
+        - mountains.each do |mountain|
+          %tr
+            %td= link_to mountain.fullname, mountain
+            %td= "#{mountain.elevation}'"
+            -# %td= link_to 'Edit', edit_mountain_path(mountain)
+            -# %td= link_to 'Destroy', mountain, :confirm => 'Are you sure?', :method => :delete
 
-%table.table.table-striped
-  %tbody
-    - mountains.each do |mountain|
-      %tr
-        %td= link_to mountain.name, mountain
-        %td= "#{mountain.elevation}'"
-        -# %td= link_to 'Edit', edit_mountain_path(mountain)
-        -# %td= link_to 'Destroy', mountain, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'Add Mountain', new_mountain_path
+    %br
+    = link_to 'Add Mountain', new_mountain_path

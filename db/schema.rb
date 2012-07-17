@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120716155441) do
+ActiveRecord::Schema.define(:version => 20120717192813) do
 
   create_table "hiker_trips", :force => true do |t|
     t.integer  "hiker_id"
@@ -45,12 +45,14 @@ ActiveRecord::Schema.define(:version => 20120716155441) do
     t.integer  "elevation"
     t.decimal  "lat",           :precision => 15, :scale => 12
     t.decimal  "lng",           :precision => 15, :scale => 12
-    t.string   "trainsnh_link"
+    t.string   "trailsnh_link"
     t.string   "netc_link"
     t.string   "amc_link"
     t.text     "notes"
     t.datetime "created_at",                                    :null => false
     t.datetime "updated_at",                                    :null => false
+    t.string   "fullname"
+    t.boolean  "is_nh4k"
   end
 
   create_table "trips", :force => true do |t|

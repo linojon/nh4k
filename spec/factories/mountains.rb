@@ -6,7 +6,7 @@ FactoryGirl.define do
     elevation 1
     lat "9.99"
     lng "9.99"
-    trainsnh_link "MyString"
+    trailsnh_link "MyString"
     netc_link "MyString"
     amc_link "MyString"
     notes "MyText"

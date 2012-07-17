@@ -1,30 +1,15 @@
-%p#notice= notice
+- title "#{mountain.fullname} (#{mountain.elevation}')"
 
-%p
-  %b Name:
-  = mountain.name
-%p
-  %b Elevation:
-  = mountain.elevation
-%p
-  %b Lat:
-  = mountain.lat
-%p
-  %b Lng:
-  = mountain.lng
-%p
-  %b trainsnh_link:
-  = mountain.trainsnh_link
-%p
-  %b netc_link:
-  = mountain.netc_link
-%p
-  %b amc_link:
-  = mountain.amc_link
-%p
-  %b Notes:
-  = mountain.notes
+%div
+  = markdown mountain.notes if mountain.notes.present?
+  
+%h2 Links
+%ul
+  - if mountain.amc_link.present?
+    %li= link_to 'AMC', mountain.amc_link
+  - if mountain.trailsnh_link.present?
+    %li= link_to 'TrailsNH', mountain.trailsnh_link
+  - if mountain.netc_link.present?
+    %li= link_to 'New England Trails Conditions', mountain.netc_link
 
 = link_to 'Edit', edit_mountain_path(mountain)
-\|
-= link_to 'Back', mountains_path

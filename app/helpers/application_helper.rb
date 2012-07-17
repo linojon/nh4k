@@ -11,4 +11,13 @@ module ApplicationHelper
   def body_id(id)
     content_for(:body_id) { id }
   end
+  
+  def markdown(text)
+    Redcarpet.new(text).to_html.html_safe
+  end
+  
+  # def iff(obj, &block)
+  #   debugger
+  #   with_output_buffer(&block) if obj.present?
+  # end
 end
