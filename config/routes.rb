@@ -6,6 +6,7 @@ Nh4k::Application.routes.draw do
 
   resources :mountains
 
+  match 'map' => 'pages#map'
   match 'about' => 'pages#about'
   root :to => 'pages#home'
   

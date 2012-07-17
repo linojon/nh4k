@@ -6,6 +6,17 @@ h1 {
   padding-bottom: 12px;
 }
 
+.image {
+  padding: 0 1em 1em 0;
+  
+  p {
+    text-align: center;
+    font-style: italic;
+    font-size: 90%;
+    padding: 0.5em;
+  }
+}
+
 /***************************
   application layout styles 
 ****************************/
@@ -25,6 +36,16 @@ h1 {
     color: $navbarText;
     padding-bottom: 0;
     line-height: 36px;
+  }
+  ul.nav {
+    float: right;
+    li {
+      border: 1px solid #666;
+      border-width: 0 3px 0 0;
+    }
+    li.last {
+      border-width: 0;
+    }
   }
 }
 
@@ -46,4 +67,14 @@ h1 {
   a { color: #999; }
 }
 
+/**************************
+ page specific styles
+***************************/
 
+#home {
+  .image {
+    float: left;
+    padding-top: 0;
+    padding-left: 0;
+  }
+}
