@@ -2,10 +2,12 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :start_at
-    = f.input :end_at
-    = f.input :route
+    = f.association :hikers
+    = f.association :mountains
+    = f.input :start_at, label: 'Trip date', start_year: (Date.today.year - 90), end_year: Date.today.year, input_html: {style: "font-size: 14px"}
+    =# f.input :end_at
     = f.input :distance
+    = f.input :route
 
   .form-actions
     = f.button :submit

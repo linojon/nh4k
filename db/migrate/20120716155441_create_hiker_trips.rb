@@ -1,12 +1,10 @@
 class CreateHikerTrips < ActiveRecord::Migration
   def change
-    create_table :hiker_trips do |t|
+    create_table :hikers_trips, :id => false do |t|
       t.references :hiker
       t.references :trip
-
-      t.timestamps
     end
-    add_index :hiker_trips, :hiker_id
-    add_index :hiker_trips, :trip_id
+    add_index :hikers_trips, :hiker_id
+    add_index :hikers_trips, :trip_id
   end
 end

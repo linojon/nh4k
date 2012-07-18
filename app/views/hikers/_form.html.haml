@@ -3,6 +3,7 @@
 
   .form-inputs
     = f.input :name
+    = f.input :born_on, label: 'Birthday', start_year: (Date.today.year - 90), end_year: Date.today.year, input_html: {style: "font-size: 14px"}
 
   .form-actions
     = f.button :submit

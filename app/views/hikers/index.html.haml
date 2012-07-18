@@ -1,18 +1,19 @@
-%h1 Listing hikers
+- title 'Hikers'
 
-%table
+%table.table.table-zebra
   %tr
     %th Name
-    %th
-    %th
+    %th Birthdate
     %th
 
   - hikers.each do |hiker|
     %tr
       %td= hiker.name
-      %td= link_to 'Show', hiker
-      %td= link_to 'Edit', edit_hiker_path(hiker)
-      %td= link_to 'Destroy', hiker, :confirm => 'Are you sure?', :method => :delete
+      %td= hiker.born_on
+      %td
+        = link_to 'Show', hiker, class: 'btn btn-mini'
+        = link_to 'Edit', edit_hiker_path(hiker), class: 'btn btn-mini'
+        = link_to 'Destroy', hiker, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-mini'
 
 %br
 
