@@ -11,27 +11,34 @@ $ git push origin master
 ## resources
 
 mountains
-  $ rails g scaffold Mountain name elevation:integer lat:decimal lng:decimal trailsnh_link_link netc_link_link amc_link_link notes:text
-  has_and_belongs_to_many :trips
-  has_many :hikers, through: :trips
+  $ rails g scaffold Mountain name elevation:integer lat:decimal lng:decimal
+      trailsnh_link_link netc_link_link amc_link_link notes:text
+      has_and_belongs_to_many :trips
+      has_many :hikers, through: :trips
   
 trips
-  $ rails g scaffold Trip start_at:datetime end_at:datetime route:text distance:float
-  has_and_belongs_to_many :hikers
-  has_and_belongs_to_many :mountains
+  $ rails g scaffold Trip start_at:datetime end_at:datetime route:text 
+      distance:float
+      has_and_belongs_to_many :hikers
+      has_and_belongs_to_many :mountains
 
-mountain_trips
-  $ rails g model MountainTrip mountain:references trip:references
-  rm model and helper specs
-  
+  $ rails g migration create_mountains_trips
+      def change
+        create_table :mountains_trips, :id => false do |t|
+          t.references :mountain
+          t.references :trip
+        end
+        add_index :mountains_trips, :mountain_id
+        add_index :mountains_trips, :trip_id
+      end
+
 hikers
   $ rails g scaffold Hiker name born_on:date
-  has_and_belongs_to_many :trips
-  has_many :mountains, through: :trips
+      has_and_belongs_to_many :trips
+      has_many :mountains, through: :trips
   
-hiker_trips
-  $ rails g model HikerTrip hiker:references trip:references
-  rm model and helper specs
+  $ rails g migration create_hikers_trips
+      ...
 
 journals (trip report)
       text,...
@@ -63,6 +70,16 @@ def markdown(text)
   Redcarpet.new(text).to_html.html_safe
 end
 
+-------
+ascent
+  mountain_id, trip_id
+    rename_table :mountains_trips, :ascents
+
+hike
+  is a personal
+  could add ratings, journal, photos to this
+    rename_table :hikers_trips, :hikes 
+
 =============
 
   4000 Footer
@@ -93,24 +110,54 @@ Possible lists
   
 ================
 
+Stories
+  Only admin users can edit content
+  show who's done which mountains
+
+  I can log in via facebook, twitter or google
+  I can sign up (omniauth identity) and login
+  I can see my avatar (from facebook, twitter, google)
+  List of mountains tags the ones I've done
+
+location of trailhead
+distance from home to trailhead
+
 
 ## ---------------
 ## ---------------
 ## ---------------
   
+
 =======================
+Mountain
+  many ascents
+  many trips
+  many hikers, through trips
 
-generate resources: ...
+Hiker
+  many my_hikes
+  many trips, through my_hikes
+  many ascents, through trips
 
-# todo: heroku
+Trip
+  many ascents
+  many hikers
+  belongs to trail_route
+
+Ascents (mountains_trips)
+  belongs to mountain
+  belongs to trip
+
+MyHikes (hikers_trips)
+  belongs to hiker
+  belongs to trip
 
 
-lib/extras/simple_form_extension.rb
-    ...see wiki
-config/application.rb
-    config.autoload_paths += %W(#{config.root}/lib/extras)
-config/locales/simple_form.en.yml
-    ...
-views/people/_form.html.haml
-    replace f.button :submit with
-    = f.button :wrapped, :cancel => people_path
+======
+TrailRoutes
+  many mountains
+  one trail_head
+
+TrailHeads
+  many trail_routes
+

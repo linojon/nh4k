@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120717192813) do
+ActiveRecord::Schema.define(:version => 20120722123618) do
+
+  create_table "ascents", :id => false, :force => true do |t|
+    t.integer "mountain_id"
+    t.integer "trip_id"
+  end
+
+  add_index "ascents", ["mountain_id"], :name => "index_mountains_trips_on_mountain_id"
+  add_index "ascents", ["trip_id"], :name => "index_mountains_trips_on_trip_id"
 
   create_table "hikers", :force => true do |t|
     t.string   "name"
@@ -19,14 +27,6 @@ ActiveRecord::Schema.define(:version => 20120717192813) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  create_table "hikers_trips", :id => false, :force => true do |t|
-    t.integer "hiker_id"
-    t.integer "trip_id"
-  end
-
-  add_index "hikers_trips", ["hiker_id"], :name => "index_hikers_trips_on_hiker_id"
-  add_index "hikers_trips", ["trip_id"], :name => "index_hikers_trips_on_trip_id"
 
   create_table "mountains", :force => true do |t|
     t.string   "name"
@@ -43,13 +43,13 @@ ActiveRecord::Schema.define(:version => 20120717192813) do
     t.boolean  "is_nh4k"
   end
 
-  create_table "mountains_trips", :id => false, :force => true do |t|
-    t.integer "mountain_id"
+  create_table "my_hikes", :id => false, :force => true do |t|
+    t.integer "hiker_id"
     t.integer "trip_id"
   end
 
-  add_index "mountains_trips", ["mountain_id"], :name => "index_mountains_trips_on_mountain_id"
-  add_index "mountains_trips", ["trip_id"], :name => "index_mountains_trips_on_trip_id"
+  add_index "my_hikes", ["hiker_id"], :name => "index_hikers_trips_on_hiker_id"
+  add_index "my_hikes", ["trip_id"], :name => "index_hikers_trips_on_trip_id"
 
   create_table "trips", :force => true do |t|
     t.datetime "start_at"

@@ -1,6 +1,9 @@
 class Trip < ActiveRecord::Base
   attr_accessible :distance, :end_at, :start_at, :route, :hiker_ids, :mountain_ids
 
-  has_and_belongs_to_many :hikers
-  has_and_belongs_to_many :mountains
+  has_many :ascents
+  has_many :mountains, through: :ascents
+  has_many :my_hikes
+  has_many :hikers, through: :my_hikes
+
 end

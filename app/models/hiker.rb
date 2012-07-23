@@ -1,7 +1,9 @@
 class Hiker < ActiveRecord::Base
   attr_accessible :name, :born_on
   
-  has_and_belongs_to_many :trips
-  has_many :mountains, through: :trips
-  
+  has_many :my_hikes
+  has_many :trips, through: :my_hikes
+  has_many :ascents, through: :trips
+  has_many :mountains, through: :ascents
+
 end
