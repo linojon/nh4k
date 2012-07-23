@@ -1,5 +1,12 @@
 Nh4k::Application.routes.draw do
   
+  resources :sessions
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+
+
+  resources :users
+
   resources :trips
 
   resources :hikers

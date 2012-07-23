@@ -1,4 +1,6 @@
 class HikersController < ApplicationController
+  before_filter :authorize, except: [:index, :show]
+
   expose(:hikers) { Hiker.all }
   expose(:hiker)
 

@@ -1,4 +1,6 @@
 class TripsController < ApplicationController
+  before_filter :authorize, except: [:index, :show]
+
   expose(:trips) { Trip.all }
   expose(:trip)
 

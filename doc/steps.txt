@@ -93,6 +93,7 @@ Possible lists
       all 4000 footers
       sort by Name, Elevation
       highlight which ones hiked (current_user)
+        multiple users
       tag which to do next?
       map integrated, interactive (?)
       
@@ -106,7 +107,13 @@ Possible lists
   hikers
     per hiker, which mountains they've completed, % done :), hikes per year rate ? :)
     
-      
+  .....
+  http://railscasts.com/episodes/250-authentication-from-scratch-revised?view=asciicast
+  rails g resource user email password_digest
+  rake db:migrate
+  ...
+  rails g controller sessions new
+
   
 ================
 
@@ -141,7 +148,8 @@ Hiker
 
 Trip
   many ascents
-  many hikers
+  many my_hikes
+  many hikers, through my_hikes
   belongs to trail_route
 
 Ascents (mountains_trips)

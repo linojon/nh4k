@@ -1,4 +1,6 @@
 class MountainsController < ApplicationController
+  before_filter :authorize, except: [:index, :show]
+
   expose(:mountains) { Mountain.order('elevation DESC') }
   expose(:mountain)
 

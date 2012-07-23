@@ -12,4 +12,4 @@
   - if mountain.netc_link.present?
     %li= link_to 'New England Trails Conditions', mountain.netc_link
 
-= link_to 'Edit', edit_mountain_path(mountain)
+= link_to 'Edit', edit_mountain_path(mountain) if current_user
