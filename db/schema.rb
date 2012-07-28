@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(:version => 20120723015750) do
     t.integer "trip_id"
   end
 
-  add_index "ascents", ["mountain_id"], :name => "index_mountains_trips_on_mountain_id"
-  add_index "ascents", ["trip_id"], :name => "index_mountains_trips_on_trip_id"
+  # add_index "ascents", ["mountain_id"], :name => "index_mountains_trips_on_mountain_id"
+  # add_index "ascents", ["trip_id"], :name => "index_mountains_trips_on_trip_id"
 
   create_table "hikers", :force => true do |t|
     t.string   "name"
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(:version => 20120723015750) do
     t.integer "trip_id"
   end
 
-  add_index "my_hikes", ["hiker_id"], :name => "index_hikers_trips_on_hiker_id"
-  add_index "my_hikes", ["trip_id"], :name => "index_hikers_trips_on_trip_id"
+  # add_index "my_hikes", ["hiker_id"], :name => "index_hikers_trips_on_hiker_id"
+  # add_index "my_hikes", ["trip_id"], :name => "index_hikers_trips_on_trip_id"
 
   create_table "trips", :force => true do |t|
     t.datetime "start_at"
