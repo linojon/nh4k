@@ -14,9 +14,10 @@
       %td= trip.hikers.map(&:name).join(', ')
       %td
         = link_to 'Show', trip, class: 'btn btn-mini'
-        = link_to 'Edit', edit_trip_path(trip), class: 'btn btn-mini'
-        = link_to 'Destroy', trip, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-mini'
+        - if current_user
+          = link_to 'Edit', edit_trip_path(trip), class: 'btn btn-mini'
+          = link_to 'Destroy', trip, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-mini'
 
 %br
 
-= link_to 'New Trip', new_trip_path
+= link_to 'New Trip', new_trip_path if current_user

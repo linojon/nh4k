@@ -7,6 +7,6 @@
   %b Born on:
   = hiker.born_on
 
-= link_to 'Edit', edit_hiker_path(hiker)
+= link_to 'Edit', edit_hiker_path(hiker) if current_user
 \|
 = link_to 'Back', hikers_path

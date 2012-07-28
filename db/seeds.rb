@@ -59,5 +59,5 @@
   Mountain.create( name: name, elevation: elev, is_nh4k: true) unless Mountain.where(name: name).present?
 end
 
-mtn = Mountain.where name: 'Tom'
-mtn.update_attributes 
+# mtn = Mountain.where name: 'Tom'
+# mtn.update_attributes 

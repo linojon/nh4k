@@ -4,17 +4,17 @@
   %tr
     %th Name
     %th Birthdate
-    %th
+    - if current_user
+      %th
 
   - hikers.each do |hiker|
     %tr
-      %td= hiker.name
+      %td= link_to hiker.name, hiker
       %td= hiker.born_on
-      %td
-        = link_to 'Show', hiker, class: 'btn btn-mini'
-        = link_to 'Edit', edit_hiker_path(hiker), class: 'btn btn-mini'
-        = link_to 'Destroy', hiker, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-mini'
+      - if current_user
+        %td
+          = link_to 'Edit', edit_hiker_path(hiker), class: 'btn btn-mini'
+          = link_to 'Destroy', hiker, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-mini'
 
 %br
-
-= link_to 'New Hiker', new_hiker_path
+= link_to 'New Hiker', new_hiker_path if current_user
