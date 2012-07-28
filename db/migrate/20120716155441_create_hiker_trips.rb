@@ -4,7 +4,7 @@ class CreateHikerTrips < ActiveRecord::Migration
       t.references :hiker
       t.references :trip
     end
-    add_index :hikers_trips, :hiker_id
-    add_index :hikers_trips, :trip_id
+    # add_index :hikers_trips, :hiker_id
+    # add_index :hikers_trips, :trip_id
   end
 end
