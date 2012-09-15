@@ -6,6 +6,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# users
+admin = 'jonathan@linowes.com'
+unless User.where(email: admin).present?
+  pswd = ENV['PASSWORD']
+  if pswd.present?
+    User.create email: admin, password: pswd
+  else
+    puts "Warning: cannot create admin user without PASSWORD=secret rake db:seed"
+  end
+end
+
+# mountains
 [
   ['Washington', 6288],
   ['Adams', 5774],
@@ -56,8 +68,51 @@
   ['Isolation', 4004],
   ['Tecumseh', 4003]
 ].each do |name, elev, fullname|
-  Mountain.create( name: name, elevation: elev, is_nh4k: true) unless Mountain.where(name: name).present?
+  attrs = {name: name, elevation: elev, is_nh4k: true}
+  if mountain = Mountain.where(name: name).first
+    mountain.update_attributes attrs
+  else
+    Mountain.create attrs
+  end
 end
 
-# mtn = Mountain.where name: 'Tom'
-# mtn.update_attributes 
+
+# hikers
+[
+  ['Jonathan', '1957-07-11'],
+  ['Lisa', '1956-01-20'],
+  ['Rayna', '1990-10-14'],
+  ['Jarrett', '1992-04-18'],
+  ['Steven', '1994-06-16'],
+  ['Shira', '1998-12-09'],
+  ['Nikki (dog)', '2006-01-11']
+].each do |name, birth|
+  attrs = {name: name, born_on: birth}
+  if hiker = Hiker.where(name: name).first
+    hiker.update_attributes attrs
+  else
+    Hiker.create attrs
+  end
+end
+
+
+# trips
+[
+  ['2012-07-29', 'Cannon', ['Lisa', 'Jarrett', 'Steven']],
+  ['2012-07-15', ['Hancock', 'South Hancock'], ['Jonathan', 'Lisa', 'Jarrett', 'Shira', 'Nikki (dog)']],
+  ['2012-05-19', 'Monroe', ['Jonathan', 'Lisa', 'Shira', 'Nikki (dog)']],
+  ['2012-03-12', 'Tom', ['Jonathan', 'Lisa']],
+  ['2011-06-19', 'Moosilauke', ['Jonathan', 'Lisa']],
+  ['2010-07-11', 'Cannon', ['Jonathan', 'Lisa', 'Rayna', 'Jarrett', 'Steven', 'Shira']],
+  ['2010-07-01', 'Moosilauke', ['Jonathan', 'Lisa']],
+  ['2004-10-01', 'Lafayette', ['Jonathan', 'Lisa', 'Rayna', 'Jarrett', 'Steven']]
+].each do |date, mountains, hikers|
+  # NOTE: Not updating, only creating
+  unless Trip.where(start_at: date).present?
+    trip = Trip.create start_at: date
+    Array(mountains).each {|mtn| trip.ascents.create( mountain: Mountain.where(name: mtn).first) }
+    Array(hikers).each {|hiker| trip.my_hikes.create( hiker: Hiker.where(name: hiker).first) }
+  end
+end
+
+ 

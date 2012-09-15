@@ -3,14 +3,12 @@
 %table.table.table-zebra
   %tr
     %th Name
-    %th Birthdate
     - if current_user
       %th
 
   - hikers.each do |hiker|
     %tr
       %td= link_to hiker.name, hiker
-      %td= hiker.born_on
       - if current_user
         %td
           = link_to 'Edit', edit_hiker_path(hiker), class: 'btn btn-mini'
