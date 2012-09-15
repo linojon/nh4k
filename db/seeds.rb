@@ -109,7 +109,7 @@ end
 ].each do |date, mountains, hikers|
   # NOTE: Not updating, only creating
   unless Trip.where(start_at: date).present?
-    trip = Trip.create start_at: date
+    trip = Trip.create start_at: date.to_datetime
     Array(mountains).each {|mtn| trip.ascents.create( mountain: Mountain.where(name: mtn).first) }
     Array(hikers).each {|hiker| trip.my_hikes.create( hiker: Hiker.where(name: hiker).first) }
   end
