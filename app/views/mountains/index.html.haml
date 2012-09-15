@@ -18,13 +18,16 @@
             %td= link_to mountain.fullname, mountain
             %td= "#{mountain.elevation}'"
             - if current_user
-              %td
+              %td.has_tooltip
                 - hiker = Hiker.where(name: 'Jonathan').first
-                - trips = hiker.trips.where(ascents: {mountains:mountain})
-                - trips.all.each do |trip|
-                  =link_to trip.start_at.to_date, trip
+                - mountain.trips.for_hiker(hiker).all.each do |trip|
+                  =link_to trip, rel: 'tooltip', title: "#{hiker.name} #{trip.start_at.to_date}" do
+                    %i.icon-thumbs-up
             -# %td= link_to 'Edit', edit_mountain_path(mountain)
             -# %td= link_to 'Destroy', mountain, :confirm => 'Are you sure?', :method => :delete
     - if current_user
       %br
       = link_to 'Add Mountain', new_mountain_path
+
+- content_for :javascript_ready do
+  $('td.has_tooltip a').tooltip();

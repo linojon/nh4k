@@ -2,21 +2,26 @@
 TODO
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-EPICS
-  Photos
-      update photos from trip
-      choose one (or more?) for Mountain#show page
-      
-
-  Decide Next Hike
+EPIC: Decide Next Hike
       find mountains that selected hikers havent done yet
       show hike distance and difficulty
       show trailhead distance from home
 
 
-  See My Progress
+EPIC: See My Progress
       mountains list highlights my ascents
       map highlights my ascents
+          lat/lng in Mountain
+          user avatar (thumbnail) as flag
+
+
+EPIC: Photos
+      upload and view photos from trip
+      choose one (or more?) for Mountain#show page
+      tag hikers in photo
+
+
+
 
 ## ---------------
 ## resources

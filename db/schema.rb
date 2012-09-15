@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120723015750) do
+ActiveRecord::Schema.define(:version => 20120915193843) do
 
-  create_table "ascents", :id => false, :force => true do |t|
+  create_table "ascents", :force => true do |t|
     t.integer "mountain_id"
     t.integer "trip_id"
   end
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20120723015750) do
     t.boolean  "is_nh4k"
   end
 
-  create_table "my_hikes", :id => false, :force => true do |t|
+  create_table "my_hikes", :force => true do |t|
     t.integer "hiker_id"
     t.integer "trip_id"
   end
