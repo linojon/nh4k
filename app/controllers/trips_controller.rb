@@ -1,7 +1,7 @@
 class TripsController < ApplicationController
   before_filter :authorize, except: [:index, :show]
 
-  expose(:trips) { Trip.all }
+  expose(:trips) { Trip.order('start_at DESC') }
   expose(:trip)
 
   def create

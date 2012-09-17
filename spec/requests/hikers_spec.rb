@@ -1,11 +1,27 @@
 require 'spec_helper'
 
 describe "Hikers" do
-  describe "GET /hikers" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get hikers_path
-      response.status.should be(200)
+  describe "without authorization" do
+    describe "GET /hikers" do
+      it "should redirect" do
+        get '/hikers'
+        response.status.should be(302)
+      end
     end
   end
+ 
+  describe "with authorization" do
+    before :each do
+      given_a_user_is_logged_in
+    end
+
+    describe "GET /hikers" do
+      it "should load page" do
+        visit '/hikers'
+        current_path.should == '/hikers'
+      end
+    end
+
+  end
 end
+

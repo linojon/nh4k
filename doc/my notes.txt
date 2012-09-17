@@ -9,11 +9,13 @@ EPIC: Decide Next Hike
 
 
 EPIC: See My Progress
-      mountains list highlights my ascents
-      map highlights my ascents
+      mountains list highlights hiker's ascents
+          select hiker
+      map highlights hiker's ascents
           lat/lng in Mountain
           user avatar (thumbnail) as flag
-
+      same for multiple hikers
+      
 
 EPIC: Photos
       upload and view photos from trip
