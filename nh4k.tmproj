@@ -561,8 +561,8 @@
 		<string>spec/spec_helper.rb</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
-	<true/>
+	<false/>
 	<key>windowFrame</key>
-	<string>{{1323, 63}, {1223, 724}}</string>
+	<string>{{1440, 63}, {1223, 724}}</string>
 </dict>
 </plist>
